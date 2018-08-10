@@ -1,19 +1,34 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Dashboard from "./components/Dashboard/Dashboard";
+import Form from "./components/Form/Form";
+import Header from "./components/Header/Header";
+import { HashRouter } from "react-router-dom";
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      products: [1, 2, 3, 4, 5],
+      updateProducts: {
+        product_id: "",
+        productName: "",
+        price: 0,
+        imageUrl: ""
+      }
+    };
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <HashRouter>
+        <div className="App">
+          <Dashboard products={this.state.products} />
+          <Form />
+          <Header />
+        </div>
+      </HashRouter>
     );
   }
 }
